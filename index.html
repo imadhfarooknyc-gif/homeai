@@ -2,21 +2,47 @@
 <html>
 <head>
   <title>HomeAI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-  <h1>Welcome to HomeAI</h1>
-  <p>Your smart assistant</p>
 
-  <input type="text" id="input" placeholder="Ask something..." />
-  <button onclick="send()">Send</button>
+<body style="font-family: Arial; background:#f5f5f5; text-align:center;">
 
-  <p id="output"></p>
+  <div style="max-width:500px; margin:80px auto; background:white; padding:20px; border-radius:12px;">
+
+    <h1>HomeAI 🤖</h1>
+    <p>Ask me anything</p>
+
+    <input id="input"
+      placeholder="Type your question..."
+      style="width:80%; padding:10px; margin-top:10px;" />
+
+    <br><br>
+
+    <button onclick="send()"
+      style="padding:10px 20px; cursor:pointer;">
+      Send
+    </button>
+
+    <div style="margin-top:20px; text-align:left;">
+      <h3>Response:</h3>
+      <p id="output">Waiting for input...</p>
+    </div>
+
+  </div>
 
   <script>
     function send() {
-      let input = document.getElementById("input").value;
-      document.getElementById("output").innerText = "You said: " + input;
+      let text = document.getElementById("input").value;
+
+      if (!text) {
+        document.getElementById("output").innerText = "Please type something first.";
+        return;
+      }
+
+      document.getElementById("output").innerText =
+        "You asked: " + text + "\n\n(Next step: AI will answer this)";
     }
   </script>
+
 </body>
 </html>
